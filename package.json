@@ -1,0 +1,24 @@
+{
+  "name": "rock-starter",
+  "version": "1.0.0",
+  "description": "A 4 bar rock music generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sam-Jeston/rock-starter.git"
+  },
+  "keywords": [
+    "Node",
+    "SOX",
+    "Music"
+  ],
+  "author": "Sam Jeston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sam-Jeston/rock-starter/issues"
+  },
+  "homepage": "https://github.com/Sam-Jeston/rock-starter#readme"
+}
