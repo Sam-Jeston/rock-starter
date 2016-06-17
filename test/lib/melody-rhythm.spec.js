@@ -3,7 +3,7 @@ let rhythmGenerator = require('../../lib/melody-rhythm').generate
 describe('melodic rhythm', () => {
   it('each bar should contain 4 beats', () => {
     let bars = rhythmGenerator()
-    console.log(bars)
+
     let totals = _.mapValues(bars, (bar) => {
       return bar.reduce((prev, current) => current + prev, 0)
     })
