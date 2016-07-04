@@ -4,20 +4,24 @@ const fs = Promise.promisifyAll(require('fs'))
 const express = require('express')
 const app = express()
 
-app.get('/create-song', (req, res) => {
-  createSong().then((file) => {
-    let sendOptions = {
-      root: `./`
-    }
+function createApi () {
+  app.get('/create-song', (req, res) => {
+    createSong().then((file) => {
+      let sendOptions = {
+        root: `./`
+      }
 
-    res.sendFile(file, sendOptions, (err) => {
-      if (err) res.status(500).end()
-      return fs.unlinkAsync(file)
+      res.sendFile(file, sendOptions, (err) => {
+        if (err) res.status(500).end()
+        return fs.unlinkAsync(file)
+      })
+    }).catch((err) => {
+      console.error(err)
+      res.status(500).end()
     })
-  }).catch((err) => {
-    console.error(err)
-    res.status(500).end()
   })
-})
 
-app.listen(3000)
+  app.listen(3000)
+}
+
+module.exports = createApi

@@ -1,80 +1,55 @@
+let _ = require('lodash')
+
 let paths = {
-  guitar: '/home/sam/Music/guitar-exports/',
-  drum: '/home/sam/Music/drum-exports/',
-  piano: '/home/sam/Music/piano-exports/'
+  guitar: process.env.GUITAR_LOCATION || '/home/sam/Music/guitar-exports/',
+  drum: process.env.DRUM_LOCATION || '/home/sam/Music/drum-exports/',
+  piano: process.env.PIANO_LOCATION || '/home/sam/Music/piano-exports/',
+  bass: process.env.BASS_LOCATION || '/home/sam/Music/bass-exports/'
 }
 
 let minorProgression = {
   A: ['A', 'C', 'D', 'E'],
-  B: ['B', 'D', 'E', 'F', 'G'],
-  C: ['C', 'E', 'F', 'G', 'A'],
-  D: ['D', 'F', 'G', 'B'],
-  E: ['A', 'B', 'C', 'E', 'G'],
-  F: ['A', 'C', 'D', 'F', 'G'],
-  FSharp: ['A', 'C', 'D', 'F', 'G'],
-  G: ['A', 'C', 'D', 'E', 'G']
+  C: ['C', 'E', 'F', 'G'],
+  D: ['D', 'F', 'G', 'A', 'C'],
+  E: ['E', 'G', 'A', 'B'],
+  F: ['A', 'C', 'F', 'G'],
+  G: ['A', 'B', 'D', 'G']
 }
 
-let guitarTrackList = [
-  {
-    name: 'Clean-AAGG.wav',
-    firstBar: minorProgression.A,
-    secondBar: minorProgression.A,
-    thirdBar: minorProgression.G,
-    fourthBar: minorProgression.G
-  }, {
-    name: 'Clean-ACBG.wav',
-    firstBar: minorProgression.A,
-    secondBar: minorProgression.C,
-    thirdBar: minorProgression.B,
-    fourthBar: minorProgression.G
-  }, {
-    name: 'Clean-ACDD.wav',
-    firstBar: minorProgression.A,
-    secondBar: minorProgression.C,
-    thirdBar: minorProgression.D,
-    fourthBar: minorProgression.D
-  }, {
-    name: 'Clean-ACGG.wav',
-    firstBar: minorProgression.A,
-    secondBar: minorProgression.C,
-    thirdBar: minorProgression.G,
-    fourthBar: minorProgression.G
-  }, {
-    name: 'Clean-AFFG.wav',
-    firstBar: minorProgression.A,
-    secondBar: minorProgression.F,
-    thirdBar: minorProgression.F,
-    fourthBar: minorProgression.G
-  }, {
-    name: 'Clean-ACGG.wav',
-    firstBar: minorProgression.A,
-    secondBar: minorProgression.G,
-    thirdBar: minorProgression.FSharp,
-    fourthBar: minorProgression.F
-  }
-]
+let minorProgressions = ['AFGA', 'ACGG', 'AEGF', 'AEDC', 'AFCG']
 
-let drumTrackList = [
-  {
-    name: 'Drums-1.wav',
-    style: 'To-do'
-  }, {
-    name: 'Drums-2.wav',
-    style: 'To-do'
-  }, {
-    name: 'Drums-3.wav',
-    style: 'To-do'
-  }, {
-    name: 'Drums-4.wav',
-    style: 'To-do'
-  }, {
-    name: 'Drums-5.wav',
-    style: 'To-do'
-  }, {
-    name: 'Drums-6.wav',
-    style: 'To-do'
-  }
-]
+let guitarTrackList = []
+_.forEach(minorProgressions, (p) => {
+  _.times(3, (itr) => {
+    let b = {
+      name: `${p}-${itr + 1}.wav`,
+      progression: p,
+      firstBar: minorProgression[`${p[0]}`],
+      secondBar: minorProgression[`${p[1]}`],
+      thirdBar: minorProgression[`${p[2]}`],
+      fourthBar: minorProgression[`${p[3]}`]
+    }
 
-module.exports = { paths, minorProgression, guitarTrackList, drumTrackList }
+    guitarTrackList.push(b)
+  })
+})
+
+let bassTrackList = []
+_.forEach(minorProgressions, (p) => {
+  _.times(3, (itr) => {
+    let b = {
+      name: `${p}-${itr + 1}.wav`,
+      progression: p
+    }
+
+    bassTrackList.push(b)
+  })
+})
+
+let drumTrackList = _.times(16, (itr) => {
+  return {
+    name: `d${itr + 1}.wav`
+  }
+})
+
+module.exports = { paths, minorProgression, guitarTrackList, drumTrackList, bassTrackList }
