@@ -1,15 +1,15 @@
 let _ = require('lodash')
 
 let paths = {
-  drum: process.env.DRUM_LOCATION || '/home/sam/Music/drum-exports/',
-  piano: process.env.PIANO_LOCATION || '/home/sam/Music/piano-exports/',
+  drum: process.env.DRUM_LOCATION || '/home/sam/Dropbox/rock-samples/drum-exports/',
+  piano: process.env.PIANO_LOCATION || '/home/sam/Dropbox/rock-samples/piano-exports/',
   minor: {
-    guitar: process.env.GUITAR_LOCATION || '/home/sam/Music/guitar-exports/minor/',
-    bass: process.env.BASS_LOCATION || '/home/sam/Music/bass-exports/minor/'
+    guitar: process.env.GUITAR_LOCATION || '/home/sam/Dropbox/rock-samples/guitar-exports/minor/',
+    bass: process.env.BASS_LOCATION || '/home/sam/Dropbox/rock-samples/bass-exports/minor/'
   },
   major: {
-    guitar: process.env.GUITAR_LOCATION || '/home/sam/Music/guitar-exports/major/',
-    bass: process.env.BASS_LOCATION || '/home/sam/Music/bass-exports/major/'
+    guitar: process.env.GUITAR_LOCATION || '/home/sam/Dropbox/rock-samples/guitar-exports/major/',
+    bass: process.env.BASS_LOCATION || '/home/sam/Dropbox/rock-samples/bass-exports/major/'
   }
 }
 
@@ -19,7 +19,7 @@ let minorProgression = {
   'D': ['D', 'F', 'G', 'A', 'C'],
   'E': ['E', 'G', 'A', 'B'],
   'F': ['A', 'C', 'F', 'G'],
-  'G': ['A', 'B', 'D', 'G']
+  'G': ['A', 'D', 'G']
 }
 
 let majorProgression = {
@@ -31,19 +31,33 @@ let majorProgression = {
   'G': ['A', 'B', 'D', 'G#']
 }
 
-let minorProgressions = ['AFGA', 'ACGG', 'AEGF', 'AEDC', 'AFCG']
-let majorProgressions = ['AEDE', 'AEFD', 'FDAE', 'ACDF', 'AAEE']
+let minorProgressions = [
+  {progression: 'AFGA', human: 'i VI VII i'},
+  {progression: 'ACGG', human: 'i III VII VII'},
+  {progression: 'AEGF', human: 'i v VII VI'},
+  {progression: 'AEDC', human: 'i v iv III'},
+  {progression: 'AFCG', human: 'i VI III VII'}
+]
+
+// Add this sample -> AEFD
+let majorProgressions = [
+  {progression: 'AEDE', human: 'I V IV V'},
+  {progression: 'FDAE', human: 'vi IV I V'},
+  {progression: 'ACDF', human: 'I iii IV vi'},
+  {progression: 'AAFE', human: 'I I vi V'}
+]
 
 let guitarMinorTrackList = []
 _.forEach(minorProgressions, (p) => {
   _.times(3, (itr) => {
     let b = {
-      name: `${p}-${itr + 1}.wav`,
-      progression: p,
-      firstBar: minorProgression[`${p[0]}`],
-      secondBar: minorProgression[`${p[1]}`],
-      thirdBar: minorProgression[`${p[2]}`],
-      fourthBar: minorProgression[`${p[3]}`]
+      name: `${p.progression}-${itr + 1}.wav`,
+      progression: p.progression,
+      humanProgression: p.human,
+      firstBar: minorProgression[`${p.progression[0]}`],
+      secondBar: minorProgression[`${p.progression[1]}`],
+      thirdBar: minorProgression[`${p.progression[2]}`],
+      fourthBar: minorProgression[`${p.progression[3]}`]
     }
 
     guitarMinorTrackList.push(b)
@@ -52,14 +66,15 @@ _.forEach(minorProgressions, (p) => {
 
 let guitarMajorTrackList = []
 _.forEach(majorProgressions, (p) => {
-  _.times(3, (itr) => {
+  _.times(2, (itr) => {
     let b = {
-      name: `${p}-${itr + 1}.wav`,
-      progression: p,
-      firstBar: majorProgression[`${p[0]}`],
-      secondBar: majorProgression[`${p[1]}`],
-      thirdBar: majorProgression[`${p[2]}`],
-      fourthBar: majorProgression[`${p[3]}`]
+      name: `${p.progression}-${itr + 1}.wav`,
+      progression: p.progression,
+      humanProgression: p.human,
+      firstBar: majorProgression[`${p.progression[0]}`],
+      secondBar: majorProgression[`${p.progression[1]}`],
+      thirdBar: majorProgression[`${p.progression[2]}`],
+      fourthBar: majorProgression[`${p.progression[3]}`]
     }
 
     guitarMajorTrackList.push(b)
@@ -70,8 +85,8 @@ let bassMinorTrackList = []
 _.forEach(minorProgressions, (p) => {
   _.times(3, (itr) => {
     let b = {
-      name: `${p}-${itr + 1}.wav`,
-      progression: p
+      name: `${p.progression}-${itr + 1}.wav`,
+      progression: p.progression
     }
 
     bassMinorTrackList.push(b)
@@ -80,10 +95,10 @@ _.forEach(minorProgressions, (p) => {
 
 let bassMajorTrackList = []
 _.forEach(majorProgressions, (p) => {
-  _.times(3, (itr) => {
+  _.times(2, (itr) => {
     let b = {
-      name: `${p}-${itr + 1}.wav`,
-      progression: p
+      name: `${p.progression}-${itr + 1}.wav`,
+      progression: p.progression
     }
 
     bassMajorTrackList.push(b)
