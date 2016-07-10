@@ -6,17 +6,17 @@ const app = express()
 
 function createApi () {
   app.get('/create-song', (req, res) => {
-    createSong().then((file) => {
-      let sendOptions = {
-        root: `./`
-      }
-
-      res.sendFile(file, sendOptions, (err) => {
-        if (err) res.status(500).end()
-        return fs.unlinkAsync(file)
-      })
+    let response
+    createSong().then((fileResponse) => {
+      response = fileResponse
+      return fs.readFileAsync(fileResponse.fileName, 'base64')
+    }).then((base) => {
+      response.base = base
+      fs.unlinkAsync(response.fileName)
+      res.json(response)
     }).catch((err) => {
       console.error(err)
+      fs.unlinkAsync(response.fileName)
       res.status(500).end()
     })
   })
