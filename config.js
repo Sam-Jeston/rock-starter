@@ -1,15 +1,15 @@
 let _ = require('lodash')
 
 let paths = {
-  drum: process.env.DRUM_LOCATION || '/Users/samjeston/Dropbox/rock-samples/drum-exports/',
-  piano: process.env.PIANO_LOCATION || '/Users/samjeston/Dropbox/rock-samples/piano-exports/',
+  drum: process.env.DRUM_LOCATION || '/home/sam/Dropbox/rock-samples/drum-exports/',
+  piano: process.env.PIANO_LOCATION || '/home/sam/Dropbox/rock-samples/piano-exports/',
   minor: {
-    guitar: process.env.GUITAR_LOCATION || '/Users/samjeston/Dropbox/rock-samples/guitar-exports/minor/',
-    bass: process.env.BASS_LOCATION || '/Users/samjeston/Dropbox/rock-samples/bass-exports/minor/'
+    guitar: process.env.GUITAR_LOCATION || '/home/sam/Dropbox/rock-samples/guitar-exports/minor/',
+    bass: process.env.BASS_LOCATION || '/home/sam/Dropbox/rock-samples/bass-exports/minor/'
   },
   major: {
-    guitar: process.env.GUITAR_LOCATION || '/Users/samjeston/Dropbox/rock-samples/guitar-exports/major/',
-    bass: process.env.BASS_LOCATION || '/Users/samjeston/Dropbox/rock-samples/bass-exports/major/'
+    guitar: process.env.GUITAR_LOCATION || '/home/sam/Dropbox/rock-samples/guitar-exports/major/',
+    bass: process.env.BASS_LOCATION || '/home/sam/Dropbox/rock-samples/bass-exports/major/'
   }
 }
 
