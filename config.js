@@ -1,6 +1,7 @@
 let _ = require('lodash')
 
 let paths = {
+  tempOutput: process.env.TEMP_OUTPUT || '/home/sam/Projects/rock-starter/tmp/',
   drum: process.env.DRUM_LOCATION || '/home/sam/Dropbox/rock-samples/drum-exports/',
   piano: process.env.PIANO_LOCATION || '/home/sam/Dropbox/rock-samples/piano-exports/',
   minor: {
