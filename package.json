@@ -31,10 +31,12 @@
   "homepage": "https://github.com/Sam-Jeston/rock-starter#readme",
   "dependencies": {
     "bluebird": "^3.4.1",
+    "busboy": "^0.2.13",
     "chai": "^3.5.0",
     "cors": "^2.7.1",
     "express": "^4.14.0",
     "lodash": "^4.13.1",
+    "mailgun-js": "^0.7.11",
     "mocha": "^2.5.3",
     "uuid": "^2.0.2"
   }

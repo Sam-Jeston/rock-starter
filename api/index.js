@@ -1,9 +1,7 @@
-const createSong = require('../lib').createSong
-const Promise = require('bluebird')
-const fs = Promise.promisifyAll(require('fs'))
 const express = require('express')
 const cors = require('cors')
 const app = express()
+const router = require('./router')
 
 app.use(cors())
 
@@ -13,17 +11,10 @@ app.use(cors())
 // };
 // cors(corsOptions) after '/create-song'
 
-function createApi () {
-  app.get('/create-song', (req, res) => {
-    createSong().then((fileResponse) => {
-      res.json(fileResponse)
-    }).catch((err) => {
-      console.error(err)
-      res.status(500).json({message: 'An error occured while trying to generate a song'})
-    })
-  })
-
+function boot () {
+  app.use(router)
   app.listen(3000)
 }
 
-module.exports = createApi
+// This export servers as the application registration on boot
+module.exports = boot

@@ -1,5 +1,12 @@
 let _ = require('lodash')
 
+let config = process.env.NODE_ENV || 'development'
+
+let mailgun = {
+  key: process.env.MAILGUN_KEY,
+  domain: process.env.MAILGUN_DOMAIN
+}
+
 let paths = {
   tempOutput: process.env.TEMP_OUTPUT || '/home/sam/Projects/rock-starter/tmp/',
   drum: process.env.DRUM_LOCATION || '/home/sam/Dropbox/rock-samples/drum-exports/',
@@ -120,5 +127,7 @@ module.exports = {
   guitarMajorTrackList,
   drumTrackList,
   bassMinorTrackList,
-  bassMajorTrackList
+  bassMajorTrackList,
+  mailgun,
+  config
 }
