@@ -52,7 +52,8 @@ let majorProgressions = [
   {progression: 'AEDE', human: 'I V IV V'},
   {progression: 'FDAE', human: 'vi IV I V'},
   {progression: 'ACDF', human: 'I iii IV vi'},
-  {progression: 'AAFE', human: 'I I vi V'}
+  {progression: 'AAFE', human: 'I I vi V'},
+  {progression: 'AEFD', human: 'I V iv VI'}
 ]
 
 let guitarMinorTrackList = []
