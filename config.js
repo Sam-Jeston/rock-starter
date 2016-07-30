@@ -12,12 +12,12 @@ let paths = {
   drum: process.env.DRUM_LOCATION || '/home/sam/Dropbox/rock-samples/drum-exports/',
   piano: process.env.PIANO_LOCATION || '/home/sam/Dropbox/rock-samples/piano-exports/',
   minor: {
-    guitar: process.env.GUITAR_LOCATION || '/home/sam/Dropbox/rock-samples/guitar-exports/minor/',
-    bass: process.env.BASS_LOCATION || '/home/sam/Dropbox/rock-samples/bass-exports/minor/'
+    guitar: process.env.GUITAR_LOCATION_MINOR || '/home/sam/Dropbox/rock-samples/guitar-exports/minor/',
+    bass: process.env.BASS_LOCATION_MINOR || '/home/sam/Dropbox/rock-samples/bass-exports/minor/'
   },
   major: {
-    guitar: process.env.GUITAR_LOCATION || '/home/sam/Dropbox/rock-samples/guitar-exports/major/',
-    bass: process.env.BASS_LOCATION || '/home/sam/Dropbox/rock-samples/bass-exports/major/'
+    guitar: process.env.GUITAR_LOCATION_MAJOR || '/home/sam/Dropbox/rock-samples/guitar-exports/major/',
+    bass: process.env.BASS_LOCATION_MAJOR || '/home/sam/Dropbox/rock-samples/bass-exports/major/'
   }
 }
 
