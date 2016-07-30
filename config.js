@@ -1,6 +1,6 @@
 let _ = require('lodash')
 
-let config = process.env.NODE_ENV || 'development'
+let environment = process.env.NODE_ENV || 'development'
 
 let mailgun = {
   key: process.env.MAILGUN_KEY,
@@ -130,5 +130,5 @@ module.exports = {
   bassMinorTrackList,
   bassMajorTrackList,
   mailgun,
-  config
+  environment
 }
