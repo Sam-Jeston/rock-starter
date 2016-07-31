@@ -37,6 +37,7 @@ function emailFile (req, res) {
       mailgun.messages().send(mailData, function (err, body) {
         if (err) {
           res.status(500).json({error: 'There was an issue server -> email'})
+          return
         }
 
         unlink(res)
@@ -50,6 +51,7 @@ function emailFile (req, res) {
     fs.unlink(savePath, (err) => {
       if (err) {
         res.status(500).json({error: 'There was an issue server -> email'})
+        return
       }
 
       res.json({status: 'uploaded'})
